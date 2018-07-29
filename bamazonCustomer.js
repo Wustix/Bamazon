@@ -1,4 +1,5 @@
 var mysql = require("mysql");
+// var inquirer = require("inquirer");
 
 var connection = mysql.createConnection({
     host: "localhost",
@@ -17,13 +18,19 @@ var connection = mysql.createConnection({
 connection.connect(function (err) {
     if (err) throw err;
     // if connection is successful
-    
-    connection.query("SELECT * FROM products", function (err, result) {
-        // if any error while executing above query, throw error
-        if (err) throw err;
-        // if there is no error, you have the result
-        console.log(result);
+    displayProducts();
+
+});
+
+var displayProducts = function () {
+    var query = 'SELECT * FROM Products'
+    connection.query(query, function (err, res) {
+        for (var i = 0; i < res.length; i++) {
+            console.log("Item ID: " + res[i].itemID + " || Product: " + res[i].productname + " || Department: " + res[i].departmentname + " || Price: " + res[i].price + " || Stock: " + res[i].stockquantity);
+        }
         connection.end();
 
-    });
-});
+    })
+
+};
+
