@@ -67,23 +67,32 @@ function start() {
 
             }
         ]).then(function (answer) {
-            var query = "SELECT * FROM Products WHERE itemID =" + answer.Quantity;
+            var query = "SELECT * FROM Products WHERE itemID = " + answer.Product;
 
             connection.query(query, function (err, res) {
-                if (answer.Quantity <= res) {
-                    for (var i = 0; i < res.length; i++) {
-                        console.log("There are" + res[i].stockquantity + "total left of" + res[i].productname + ".");
-                        console.log("Thank for for your order." + res[i].stockquantity + "pieces of" + res[i].productname + "is on the way!");
+                for (var i = 0; i < res.length; i++) {
+                    if (answer.Quantity < res[i].stockquantity) {
+                        console.log("Great, we have enough stuff!!")
+
                     }
 
+                   
+                    else {
+                        console.log("Not enough items in stock!");
+                    }
                 }
-                else {
-                    console.log("Not enough items in stock!");
-                }
-                displayProducts();
+
+
+
+
+
+               
+                connection.end();
+                
             })
         })
 
+    
 
 
 }
