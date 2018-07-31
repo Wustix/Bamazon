@@ -67,32 +67,53 @@ function start() {
 
             }
         ]).then(function (answer) {
-            var query = "SELECT * FROM Products WHERE itemID = " + answer.Product;
+            return new Promise(function (resolve, reject) {
+                var query = "SELECT * FROM Products WHERE itemID = " + answer.Product;
 
-            connection.query(query, function (err, res) {
+                connection.query(query, function (err, res) {
+                    if (err) reject(err);
+                    resolve(res);
+                })
+            }).then(function (res) {
+
                 for (var i = 0; i < res.length; i++) {
                     if (answer.Quantity < res[i].stockquantity) {
                         console.log("Great, we have enough stuff!!")
 
                     }
 
-                   
+
                     else {
                         console.log("Not enough items in stock!");
                     }
                 }
-
-
-
-
-
-               
+            }).catch(function (err) {
+                console.log(err);
                 connection.end();
-                
+            }).then(function (Quantity) {
+                for (var i = 0; i < res.length; i++) {
+                    if (answer.Quantity) {
+                        var newQuantity = res[i].stockquantity - answer.Quantity;
+                        var product = answer.Product;
+                        var totalCost = (answer.Quantity * res[i].price);
+
+                        connection.query("UPDATE products SET stockquantity= ? WHERE itemID= ?", [newQuantity, product], function (err, res) {
+                            if (err) throw err;
+                            console.log("Your total is $" + totalCost);
+                            connection.end();
+                        })
+                    }
+
+
+                    else {
+                        console.log(Quantity);
+                        connection.end();
+                    }
+                }
             })
+
+
+
+
         })
-
-    
-
-
 }
