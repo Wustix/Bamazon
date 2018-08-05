@@ -113,12 +113,12 @@ function start() {
                     connection.query("UPDATE products SET stockquantity=? WHERE itemID=?", [newQuantity, product], function (err, res) {
                         if (err) reject(err);
                         console.log('Your total cost is $' + totalCost);
-                        // destroy connection
+                        // end connection
                         connection.end();
                     });
                 } else {
                     console.log(object);
-                    // destroy connection
+                    // end connection
                     connection.end();
                 }
             });
