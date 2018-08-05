@@ -1,6 +1,6 @@
 # Bamazon
 
-Created an Amazon-like storefront using MySQL, the MySQL NPM Package, and the Prompt Package.
+Created an Amazon-like storefront using MySQL, the MySQL NPM Package, and the Inquirer Package and Cli-Table Package.
 
 The application will take in orders from customers and deplete from the store's total supplies.
 
