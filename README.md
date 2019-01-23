@@ -11,4 +11,4 @@ Initializing node bamazon.js in the command line brings up the storefront. It wi
 
 ![2ruqbv](https://user-images.githubusercontent.com/36867791/51627450-b6959800-1f07-11e9-9dc0-a2aaadfcefd5.gif)
 
-
+![2ruqrg](https://user-images.githubusercontent.com/36867791/51627624-56ebbc80-1f08-11e9-8eb4-7d95c17e1254.gif)
