@@ -114,13 +114,16 @@ function start() {
                         if (err) reject(err);
                         console.log('Your total cost is $' + totalCost);
                         // end connection
-                        connection.end();
+                        // connection.end();
                     });
                 } else {
                     console.log(object);
                     // end connection
-                    connection.end();
+                    // connection.end();
+                    
                 }
+                displayProducts();
             });
+            
         });
 }
