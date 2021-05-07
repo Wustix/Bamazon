@@ -20,7 +20,7 @@
   "dependencies": {
     "cli-table": "^0.3.4",
     "inquirer": "^6.5.2",
-    "lodash": "^4.17.20",
+    "lodash": "^4.17.21",
     "mysql": "^2.18.1"
   }
 }
