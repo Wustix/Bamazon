@@ -18,9 +18,9 @@
   },
   "homepage": "https://github.com/Wustix/Bamazon#readme",
   "dependencies": {
-    "cli-table": "^0.3.4",
-    "inquirer": "^6.5.2",
-    "lodash": "^4.17.20",
+    "cli-table": "^0.3.11",
+    "inquirer": "^8.2.0",
+    "lodash": "^4.17.21",
     "mysql": "^2.18.1"
   }
 }
